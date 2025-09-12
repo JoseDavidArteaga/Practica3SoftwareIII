@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Taller de Personas y Cuentas</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <h2>Registrar Persona</h2>
+    <form id = "formPersona">
+        <input type="text" id="nombre" placeholder="Nombre" required>
+        <input type="text" id="apellido" placeholder="Apellido" required>
+        <button type="submit">Agregar Persona</button>
+    </form>
+
+    <h2>Registrar Cuenta</h2>
+    <form id = "formCuenta">
+        <input type="text" id="numeroCuenta" placeholder="Número de Cuenta" required>
+        <input type="number" id="saldo" placeholder="Saldo Inicial" required>
+        <select id="tipo">
+            <option value="Ahorro">Ahorro</option>
+            <option value="Corriente">Corriente</option>
+        </select>
+        <select id="personaSelect"> </select>
+        <button type="submit">Agregar Cuenta</button>
+    </form>
+
+    <h2> Cuentas Registradas</h2>
+    <table border = "1">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Saldo</th>
+                <th>Tipo</th>
+                <th>Persona</th>
+            </tr>
+        </thead>
+        <tbody id="tablaCuentas"></tbody>
+
+    </table>
+
+    <!--Archivos JS-->
+    <!--1. Entidades -->
+    <script src="../capaDeAccesoADatos/entitys/Persona.js"></script>
+    <script src="../capaDeAccesoADatos/entitys/Cuenta.js"></script>
+    
+    <!--2. Repositorios -->
+    <script src="../capaDeAccesoADatos/repositories/PersonaRepository.js"></script>
+    <script src="../capaDeAccesoADatos/repositories/CuentaRepository.js"></script>
+
+    <!--3. Fachadas -->
+    <script src="../fachadaServices/gestionarPersonasServices.js">  </script>
+    <script src="../fachadaServices/gestionarCuentasServices.js">  </script>
+
+    <!--4. Vista -->
+    <script src="logicaPersona.js"></script>
+    <script src="logicaCuenta.js"></script>
+
+</body>
+
+</html>
