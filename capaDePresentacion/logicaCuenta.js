@@ -19,11 +19,16 @@ formCuenta.addEventListener("submit", (e) => { // capturar el evento submit del 
             <td>${nuevaCuenta.numeroCuenta}</td>
             <td>${nuevaCuenta.saldo.toFixed(2)}</td>
             <td>${nuevaCuenta.tipo}</td>
-            <td>${nuevaCuenta.persona.nombre} ${nuevaCuenta.persona.apellido}</td>
+            <td>
+                ${nuevaCuenta.persona.nombre} ${nuevaCuenta.persona.apellido}
+                ${nuevaCuenta.persona.empresa ? " - " + nuevaCuenta.persona.empresa.toString() : ""}
+            </td>
         `;
         tablaCuentas.appendChild(fila);
 
         formCuenta.reset();
+
+        actualizarEstadisticas();
 
     } catch (error) {
         alert(error.message);

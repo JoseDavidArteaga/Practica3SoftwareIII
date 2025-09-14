@@ -5,12 +5,13 @@ class GestionarPersonas{
         this.repo = repo; // instancia de PersonaRepository
     }
 
-    registrarPersona(nombre, apellido) {
+    registrarPersona(nombre, apellido, empresa = null) {
         const id = this.repo.siguienteId();
-        const persona = new Persona(id, nombre, apellido);
+        const persona = new Persona(id, nombre, apellido, empresa);
         this.repo.agregar(persona);
         return persona;
     }
+
 
     listarPersonas() {
         return this.repo.obtenerTodas();

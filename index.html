@@ -6,27 +6,39 @@
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+    <h2>Registrar empresa</h2>
+    <form id="formEmpresa">
+        <input type="text" id="nit" placeholder="NIT" required>
+        <input type="text" id="empresaNombre" placeholder="Nombre empresa" required>
+        <input type="text" id="empresaDireccion" placeholder="Dirección" required>
+        <button type="submit">Agregar Empresa</button>
+    </form>
+
     <h2>Registrar Persona</h2>
-    <form id = "formPersona">
-        <input type="text" id="nombre" placeholder="Nombre" required>
-        <input type="text" id="apellido" placeholder="Apellido" required>
+    <form id="formPersona">
+        <input type="text" id="personaNombre" placeholder="Nombre persona" required>
+        <input type="text" id="personaApellido" placeholder="Apellido persona" required>
+        <select id="empresaSelectPersona">
+            <option value="">-- Sin empresa --</option>
+        </select>
         <button type="submit">Agregar Persona</button>
     </form>
 
     <h2>Registrar Cuenta</h2>
-    <form id = "formCuenta">
+    <form id="formCuenta">
         <input type="text" id="numeroCuenta" placeholder="Número de Cuenta" required>
         <input type="number" id="saldo" placeholder="Saldo Inicial" required>
         <select id="tipo">
             <option value="Ahorro">Ahorro</option>
             <option value="Corriente">Corriente</option>
         </select>
-        <select id="personaSelect"> </select>
+        <select id="personaSelect"></select>
         <button type="submit">Agregar Cuenta</button>
     </form>
 
+
     <h2> Cuentas Registradas</h2>
-    <table border = "1">
+    <table border="1">
         <thead>
             <tr>
                 <th>Número</th>
@@ -36,26 +48,34 @@
             </tr>
         </thead>
         <tbody id="tablaCuentas"></tbody>
-
     </table>
 
-    <!--Archivos JS-->
-    <!--1. Entidades -->
-    <script src="../capaDeAccesoADatos/entitys/Persona.js"></script>
-    <script src="../capaDeAccesoADatos/entitys/Cuenta.js"></script>
-    
-    <!--2. Repositorios -->
-    <script src="../capaDeAccesoADatos/repositories/PersonaRepository.js"></script>
-    <script src="../capaDeAccesoADatos/repositories/CuentaRepository.js"></script>
+    <h2>Estadísticas de Cuentas</h2>
+    <div id="estadisticas">
+        <p>Cantidad de cuentas: <span id="cantidadCuentas">0</span></p>
+        <p>Cantidad de cuentas Ahorro: <span id="cantidadAhorro">0</span></p>
+        <p>Cantidad de cuentas Corriente: <span id="cantidadCorriente">0</span></p>
+        <p>Total saldo de cuentas: <span id="totalSaldo">0</span></p>
+        <p>Total saldo de cuentas Ahorro: <span id="totalSaldoAhorro">0</span></p>
+        <p>Total saldo de cuentas Corriente: <span id="totalSaldoCorriente">0</span></p>
+    </div>
 
-    <!--3. Fachadas -->
-    <script src="../fachadaServices/gestionarPersonasServices.js">  </script>
-    <script src="../fachadaServices/gestionarCuentasServices.js">  </script>
+    <script src="capaDeAccesoADatos/entitys/Persona.js"></script>
+    <script src="capaDeAccesoADatos/entitys/Cuenta.js"></script>
+    <script src="capaDeAccesoADatos/entitys/Empresa.js"></script>
 
-    <!--4. Vista -->
+    <script src="capaDeAccesoADatos/repositories/EmpresaRepository.js"></script>
+    <script src="capaDeAccesoADatos/repositories/PersonaRepository.js"></script>
+    <script src="capaDeAccesoADatos/repositories/CuentaRepository.js"></script>
+
+    <script src="fachadaServices/gestionarEmpresasServices.js"></script>
+    <script src="fachadaServices/gestionarPersonasServices.js"></script>
+    <script src="fachadaServices/gestionarCuentasServices.js"></script>
+
+    <script src="logicaEmpresa.js"></script>
     <script src="logicaPersona.js"></script>
+    <script src="logicaEstadisticas.js"></script>
     <script src="logicaCuenta.js"></script>
-
+    
 </body>
-
 </html>
